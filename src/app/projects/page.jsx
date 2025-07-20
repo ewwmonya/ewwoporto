@@ -1,7 +1,10 @@
+import { client } from '@/sanity/client';
 import GridCardItem from '@/components/GridCardItem';
 import ProjectsGrid from '@/components/ProjectsGrid';
 
-const page = () => {
+const page = async () => {
+	const projects = await client.fetch(`*[_type == "Project"]`);
+
 	return (
 		<main className='bg-base-200 px-8 lg:px-32 flex flex-col'>
 			<div className='py-8'>
@@ -16,12 +19,9 @@ const page = () => {
 			</div>
 			<ProjectsGrid>
 				{/* Map Here */}
-				<GridCardItem />
-				<GridCardItem />
-				<GridCardItem />
-				<GridCardItem />
-				<GridCardItem />
-				<GridCardItem />
+				{projects.map((project) => {
+					return <GridCardItem key={project._id} data={project} />;
+				})}
 			</ProjectsGrid>
 			<div className='join  flex justify-center pt-12 pb-24'>
 				<button className='join-item btn'>1</button>
