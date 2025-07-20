@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const BlogCard = ({ post }) => {
 	const { title, slug, _id, shortDescription } = post;
-	const linkToBlog = `/blog/${slug.current}?id=${_id}`;
+	const linkToBlog = `/blog/${_id}?${slug.current}`;
 	return (
 		<div className='card card-border bg-base-200 rounded-lg'>
 			<div className='card-body'>
