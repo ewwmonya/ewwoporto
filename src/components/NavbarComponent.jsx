@@ -12,7 +12,6 @@ const links = [
 ];
 const NavbarComponent = () => {
 	const router = usePathname();
-	console.log(router);
 	return (
 		<nav className='navbar bg-base-200  grid lg:grid-cols-3 grid-cols-2 px-4 lg:px-16 '>
 			{/* Logo */}
@@ -43,7 +42,7 @@ const NavbarComponent = () => {
 					<Sidebar links={links} />
 				</div>
 				<Image
-					className='hidden lg:block'
+					className='hidden lg:block h-[100px] w-[100px]'
 					width={'100'}
 					height={'100'}
 					src={'/undraw_code-thinking_0vf2.svg'}

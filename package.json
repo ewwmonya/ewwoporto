@@ -9,14 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^3.2.1",
+    "@sanity/image-url": "^1.1.0",
     "daisyui": "^5.0.46",
     "next": "15.4.1",
+    "next-sanity": "^2.1.0",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/typography": "^0.5.16",
     "eslint": "^9",
     "eslint-config-next": "15.4.1",
     "tailwindcss": "^4.1.11"

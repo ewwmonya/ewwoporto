@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 
 const Sidebar = ({ links }) => {
 	const router = usePathname();
-	console.log(router);
 	return (
 		<div className='drawer drawer-end'>
 			<input id='my-drawer' type='checkbox' className='drawer-toggle' />
