@@ -32,7 +32,6 @@ const page = async ({ params }) => {
 					</section>
 				</div>
 			</div>
-			<FeaturedProjects />
 		</main>
 	);
 };

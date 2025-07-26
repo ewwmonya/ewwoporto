@@ -1,7 +1,10 @@
+import PortableTextComponent from '@/components/PortableTextComponent';
 import { client } from '@/sanity/client';
+import { urlFor } from '@/sanity/imageBuilder';
+import Image from 'next/image';
 
 const page = async ({ params }) => {
-	const { slug } = params;
+	const { slug } = await params;
 	const project = await client.fetch(
 		`*[_type == "Project" && _id == '${slug}']`
 	);
@@ -10,14 +13,24 @@ const page = async ({ params }) => {
 		<main className='mt-16 px-8 lg:px-32 min-h-[85vh] mb-16'>
 			{project.map((data) => {
 				return (
-					<div className='min-h-[35vh] grid lg:grid-cols-2 gap-4'>
-						{/* left side */}
-						<div className='h-full bg-base-300'>
+					<div
+						key={data.title}
+						className='min-h-[35vh] grid grid-cols-1 lg:grid-cols-2 gap-4'
+					>
+						<section className=' w-full'>
 							{/* left side */}
-							Monya
-						</div>
-						{/* left side */}
-						<section className=''>
+							<figure className=''>
+								<Image
+									width={1000}
+									height={500}
+									className='object-cover '
+									src={urlFor(data.mainImage).url()}
+									alt='Shoes'
+								/>
+							</figure>
+						</section>
+						{/* right side */}
+						<section className='col-span-2'>
 							<div className='grid gap-4'>
 								<h1 className='text-4xl'>{data.title}</h1>
 								<p className='leading-8'>{data.shortDescription}</p>
@@ -32,62 +45,7 @@ const page = async ({ params }) => {
 							</div>
 						</section>
 						<div className='grid col-span-2 mt-24'>
-							<h3>Title</h3>
-							<p>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-								Tempora consequatur saepe consequuntur expedita doloremque minus
-								earum consectetur reiciendis architecto, temporibus in! Id sed
-								repellendus vero nisi, culpa hic laboriosam libero! Ex libero
-								pariatur quod distinctio minima minus adipisci iusto qui, eum
-								voluptates nostrum magnam beatae? Assumenda labore dolores earum
-								ullam aliquam. Sed sint, sit dolorem eius enim natus voluptate
-								adipisci! Sunt saepe velit, voluptatum officiis neque ipsa
-								itaque asperiores facilis ex quia. Iure dolorum neque minus
-								illum perferendis. Tempore delectus recusandae sequi. Incidunt
-								amet at aut consectetur necessitatibus tempora sequi.
-							</p>
-							<h3>Title</h3>
-							<p>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-								Tempora consequatur saepe consequuntur expedita doloremque minus
-								earum consectetur reiciendis architecto, temporibus in! Id sed
-								repellendus vero nisi, culpa hic laboriosam libero! Ex libero
-								pariatur quod distinctio minima minus adipisci iusto qui, eum
-								voluptates nostrum magnam beatae? Assumenda labore dolores earum
-								ullam aliquam. Sed sint, sit dolorem eius enim natus voluptate
-								adipisci! Sunt saepe velit, voluptatum officiis neque ipsa
-								itaque asperiores facilis ex quia. Iure dolorum neque minus
-								illum perferendis. Tempore delectus recusandae sequi. Incidunt
-								amet at aut consectetur necessitatibus tempora sequi.
-							</p>
-							<h3>Title</h3>
-							<p>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-								Tempora consequatur saepe consequuntur expedita doloremque minus
-								earum consectetur reiciendis architecto, temporibus in! Id sed
-								repellendus vero nisi, culpa hic laboriosam libero! Ex libero
-								pariatur quod distinctio minima minus adipisci iusto qui, eum
-								voluptates nostrum magnam beatae? Assumenda labore dolores earum
-								ullam aliquam. Sed sint, sit dolorem eius enim natus voluptate
-								adipisci! Sunt saepe velit, voluptatum officiis neque ipsa
-								itaque asperiores facilis ex quia. Iure dolorum neque minus
-								illum perferendis. Tempore delectus recusandae sequi. Incidunt
-								amet at aut consectetur necessitatibus tempora sequi.
-							</p>
-							<h3>Title</h3>
-							<p>
-								Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-								Tempora consequatur saepe consequuntur expedita doloremque minus
-								earum consectetur reiciendis architecto, temporibus in! Id sed
-								repellendus vero nisi, culpa hic laboriosam libero! Ex libero
-								pariatur quod distinctio minima minus adipisci iusto qui, eum
-								voluptates nostrum magnam beatae? Assumenda labore dolores earum
-								ullam aliquam. Sed sint, sit dolorem eius enim natus voluptate
-								adipisci! Sunt saepe velit, voluptatum officiis neque ipsa
-								itaque asperiores facilis ex quia. Iure dolorum neque minus
-								illum perferendis. Tempore delectus recusandae sequi. Incidunt
-								amet at aut consectetur necessitatibus tempora sequi.
-							</p>
+							<PortableTextComponent value={data.body} />
 						</div>
 					</div>
 				);

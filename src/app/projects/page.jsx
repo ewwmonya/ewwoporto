@@ -19,8 +19,9 @@ const page = async () => {
 			</div>
 			<ProjectsGrid>
 				{/* Map Here */}
-				{projects.map((project) => {
-					return <GridCardItem key={project._id} data={project} />;
+				{projects.map((project, index) => {
+					// return <h1 key={index}> Hello</h1>;
+					return <GridCardItem key={index} data={project} />;
 				})}
 			</ProjectsGrid>
 			<div className='join  flex justify-center pt-12 pb-24'>

@@ -1,16 +1,20 @@
 import FeaturedProjects from '@/components/FeaturedProjects';
 import Hero from '@/components/Hero';
+import { client } from '@/sanity/client';
 
-const page = () => {
+const page = async () => {
+	const projects = await client.fetch(`*[_type == "Project"]`);
+
 	return (
 		<main>
 			<section>
 				<Hero />
 			</section>
-			<FeaturedProjects />
+
+			<FeaturedProjects projects={projects} />
 			<section className=' p-8 flex flex-col gap-y-4'>
 				<p className='text-2xl font-thin font-mono tracking-wider'>About</p>
-				<p className='my-4 pr-4 max-w-2/3 leading-6 text-gray-700'>
+				<p className='my-4 pr-4 lg:max-w-2/3 leading-6 text-gray-700'>
 					I&apos;m a web developer with a passion for creating beautiful and
 					functional websites. I specialize in front-end development using
 					React, but I&apos;m also comfortable working with back-end
@@ -24,9 +28,9 @@ const page = () => {
 			</section>
 			<section className=' p-8 flex flex-col gap-y-4'>
 				<p className='text-2xl font-thin font-mono tracking-wider'>
-					Let's Connect
+					Let&apos;s Connect
 				</p>
-				<p className='my-4 pr-4 max-w-2/3 leading-6 text-gray-700'>
+				<p className='my-4 pr-4 lg:max-w-2/3 leading-6 text-gray-700'>
 					I&apos;m always open to new opportunities and collaborations. Feel
 					free to reach out if you have a project in mind or just want to chat
 					about web development.
