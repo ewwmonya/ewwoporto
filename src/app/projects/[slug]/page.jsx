@@ -15,7 +15,7 @@ const page = async ({ params }) => {
 				return (
 					<div
 						key={data.title}
-						className='min-h-[35vh] grid grid-cols-1 lg:grid-cols-2 gap-4'
+						className='min-h-[35vh] grid lg:grid-cols-2 gap-4'
 					>
 						<section className=' w-full'>
 							{/* left side */}
