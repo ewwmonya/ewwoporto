@@ -12,7 +12,6 @@ const page = async ({ params }) => {
 	return (
 		<main className='mt-16 px-8 lg:px-32 min-h-[85vh] mb-16'>
 			{project.map((data) => {
-				console.log(data.images);
 				return (
 					<div
 						key={data.title}
@@ -45,51 +44,25 @@ const page = async ({ params }) => {
 								<button className='btn'>View Github</button>
 							</div>
 						</section>
-						<div className='grid col-span-2 mt-24 gap-8'>
+
+						<div className='grid col-span-2 mt-24 gap-y-4'>
 							<PortableTextComponent value={data.body} />
-							<div className='carousel rounded-box w-full'>
-								<div className='carousel-item w-1/2'>
-									<img
-										src='https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp'
-										className='w-full'
-									/>
-								</div>
-								<div className='carousel-item w-1/2'>
-									<img
-										src='https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp'
-										className='w-full'
-									/>
-								</div>
-								<div className='carousel-item w-1/2'>
-									<img
-										src='https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp'
-										className='w-full'
-									/>
-								</div>
-								<div className='carousel-item w-1/2'>
-									<img
-										src='https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp'
-										className='w-full'
-									/>
-								</div>
-								<div className='carousel-item w-1/2'>
-									<img
-										src='https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp'
-										className='w-full'
-									/>
-								</div>
-								<div className='carousel-item w-1/2'>
-									<img
-										src='https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp'
-										className='w-full'
-									/>
-								</div>
-								<div className='carousel-item w-1/2'>
-									<img
-										src='https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp'
-										className='w-full'
-									/>
-								</div>
+
+							<h3 className='text-4xl'>Views:</h3>
+							<div className='carousel rounded-box flex gap-4'>
+								{data.images.map((image, index) => {
+									console.log(image.asset._ref);
+
+									return (
+										<div key={image._key} className='carousel-item   '>
+											<img
+												alt={`${data.title}-${index}`}
+												src={urlFor(image.asset._ref).url()}
+												className='overflow-hidden h-[400px]'
+											/>
+										</div>
+									);
+								})}
 							</div>
 						</div>
 					</div>
