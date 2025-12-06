@@ -33,11 +33,7 @@ const page = async ({ params }) => {
 						<section className='col-span-2 lg:col-span-1'>
 							<div className='grid gap-4'>
 								<h1 className='text-4xl'>{data.title}</h1>
-								<p className='leading-8'>{data.shortDescription}</p>
-								<p className=''>
-									<span className='font-bold'>Tech Used: </span>
-									React Edit This
-								</p>
+								<p className='leading-8'>{data?.shortDescription}</p>
 							</div>
 							<div className='grid gap-8 p-4'>
 								<button className='btn btn-accent'>View Site</button>
@@ -47,23 +43,28 @@ const page = async ({ params }) => {
 
 						<div className='grid col-span-2 mt-24 gap-y-4'>
 							<PortableTextComponent value={data.body} />
+							{data.images ? (
+								<>
+									<h3 className='text-4xl'>Views:</h3>
+									<div className='carousel rounded-box flex gap-4'>
+										{data.images?.map((image, index) => {
+											console.log(image.asset._ref);
 
-							<h3 className='text-4xl'>Views:</h3>
-							<div className='carousel rounded-box flex gap-4'>
-								{data.images.map((image, index) => {
-									console.log(image.asset._ref);
-
-									return (
-										<div key={image._key} className='carousel-item   '>
-											<img
-												alt={`${data.title}-${index}`}
-												src={urlFor(image.asset._ref).url()}
-												className='overflow-hidden h-[400px]'
-											/>
-										</div>
-									);
-								})}
-							</div>
+											return (
+												<div key={image._key} className='carousel-item   '>
+													<img
+														alt={`${data.title}-${index}`}
+														src={urlFor(image.asset._ref).url()}
+														className='overflow-hidden h-[400px]'
+													/>
+												</div>
+											);
+										})}
+									</div>
+								</>
+							) : (
+								''
+							)}
 						</div>
 					</div>
 				);
