@@ -35,17 +35,17 @@ const page = async ({ params }) => {
 						<section className='col-span-2 lg:col-span-1'>
 							<div className='grid gap-4'>
 								<h1 className='text-4xl'>{data.title}</h1>
-								<p className='leading-8'>{data?.shortDescription}</p>
+								<p className='leading-8 p-4'>{data?.shortDescription}</p>
 							</div>
 							<div className='grid gap-8 p-4'>
 								<Link
+									className='btn btn-accent'
 									to
 									href={`//www.${data.slug.current}.com`}
 									rel='noopener noreferrer'
 								>
-									<button className='btn btn-accent'>View Site</button>
+									View Site
 								</Link>
-								<button className='btn'>View Github</button>
 							</div>
 						</section>
 
