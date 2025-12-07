@@ -13,7 +13,6 @@ const page = async ({ params }) => {
 	return (
 		<main className='mt-16 px-8 lg:px-32 min-h-[85vh] mb-16'>
 			{project.map((data) => {
-				console.log(data);
 				return (
 					<div
 						key={data.title}
