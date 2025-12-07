@@ -2,6 +2,7 @@ import PortableTextComponent from '@/components/PortableTextComponent';
 import { client } from '@/sanity/client';
 import { urlFor } from '@/sanity/imageBuilder';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const page = async ({ params }) => {
 	const { slug } = await params;
@@ -12,6 +13,7 @@ const page = async ({ params }) => {
 	return (
 		<main className='mt-16 px-8 lg:px-32 min-h-[85vh] mb-16'>
 			{project.map((data) => {
+				console.log(data);
 				return (
 					<div
 						key={data.title}
@@ -36,7 +38,13 @@ const page = async ({ params }) => {
 								<p className='leading-8'>{data?.shortDescription}</p>
 							</div>
 							<div className='grid gap-8 p-4'>
-								<button className='btn btn-accent'>View Site</button>
+								<Link
+									to
+									href={`//www.${data.slug.current}.com`}
+									rel='noopener noreferrer'
+								>
+									<button className='btn btn-accent'>View Site</button>
+								</Link>
 								<button className='btn'>View Github</button>
 							</div>
 						</section>
