@@ -12,13 +12,17 @@ const page = async () => {
 			{/* Blog card container */}
 			<div className='mt-2 '>
 				<ul className='flex flex-col gap-4'>
-					{posts.map((post) => {
-						return (
-							<li key={post._id}>
-								<BlogCard post={post} />
-							</li>
-						);
-					})}
+					{posts.length < 0 ? (
+						posts.map((post) => {
+							return (
+								<li key={post._id}>
+									<BlogCard post={post} />
+								</li>
+							);
+						})
+					) : (
+						<li>More Coming Soon</li>
+					)}
 				</ul>
 			</div>
 		</div>
